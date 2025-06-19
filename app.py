@@ -21,5 +21,8 @@ user_data=pd.DataFrame({
 
 # prediction of house price
 if st.button("Predict"):
-    predict=model.predict(user_data)
-    st.write(f"The predicted house price is{predict}")
+    if area > 0 and bedrooms > 0 and age > 0:
+        prediction = model.predict(user_data)
+        st.write(f'The predicted house price is: {prediction}')
+    else:
+        st.write(f'Please enter values greater than 0 for all fields to proceed')
